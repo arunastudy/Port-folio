@@ -163,7 +163,6 @@ function truncateDescription(text: string): string {
   // Разбиваем на предложения
   const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
   let result = '';
-  let lineCount = 0;
   const maxLines = 4;
   const charsPerLine = 50; // Примерно 50 символов на строку
   
