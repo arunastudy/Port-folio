@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node -e \"require('fs').copyFileSync('Resume.pdf', 'dist/Resume.pdf')\"",
     "preview": "vite preview"
   },
   "devDependencies": {

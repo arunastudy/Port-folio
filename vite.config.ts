@@ -5,9 +5,17 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      input: {
+        main: './index.html',
+      },
+    },
   },
+  publicDir: 'public',
   server: {
     port: 5173,
     open: true,
   },
+  assetsInclude: ['**/*.pdf'],
 });

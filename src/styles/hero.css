@@ -59,24 +59,36 @@
   box-shadow: 0 12px 32px rgba(248, 81, 37, 0.25);
 }
 
+.hero-resume object,
 .hero-resume iframe,
 .hero-resume embed {
   position: absolute;
+  top: 0;
+  left: 0;
   width: calc(100% + 30px);
   height: calc(100% + 30px);
   border: none;
-  margin-left: -5px;
-  margin-top: -5px;
+  overflow: hidden;
+}
+
+.hero-resume object {
+  margin: -5px 0 0 -5px;
 }
 
 .hero-resume::-webkit-scrollbar {
   display: none;
 }
 
-.hero-resume iframe::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
+.hero-resume iframe::-webkit-scrollbar,
+.hero-resume object::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.hero-resume iframe {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hero-resume iframe {
