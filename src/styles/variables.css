@@ -1,0 +1,66 @@
+/* CSS Variables - Dark & Light Themes */
+:root {
+  /* Dark Theme (Default) - Темно-синий с оранжевыми акцентами */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #111827;
+  --bg-surface: #1a2332;
+  --bg-surface-elevated: #1f2937;
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  /* Оранжевые акценты для темной темы */
+  --accent-primary: #f85125;        /* Основной бренд - кнопки, ссылки */
+  --accent-secondary: #FCA45B;      /* Светлый бренд - градиенты */
+  --accent-tertiary: #ff4500;       /* Тёмно-оранжевый - акценты */
+  --accent-active: #f97316;         /* Активные элементы */
+  
+  --border-color: rgba(248, 81, 37, 0.2);
+  --border-hover: rgba(248, 81, 37, 0.4);
+  
+  --glow-subtle: rgba(248, 81, 37, 0.1);
+  --glow-medium: rgba(248, 81, 37, 0.15);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f3f5;
+  
+  --text-primary: #1a1a1a;
+  --text-secondary: #495057;
+  --text-muted: #868e96;
+  
+  /* Основные оранжевые акценты */
+  --accent-primary: #f85125;        /* Основной бренд - кнопки, ссылки, акценты */
+  --accent-secondary: #FCA45B;      /* Светлый бренд - градиенты, подсветки */
+  --accent-tertiary: #ff4500;       /* Тёмно-оранжевый - текстовые акценты */
+  --accent-active: #f97316;         /* Активные элементы, табы, графика */
+  
+  /* Границы с оранжевым оттенком */
+  --border-color: rgba(248, 81, 37, 0.15);
+  --border-hover: rgba(248, 81, 37, 0.35);
+  
+  /* Свечение с оранжевым */
+  --glow-subtle: rgba(248, 81, 37, 0.05);
+  --glow-medium: rgba(248, 81, 37, 0.1);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+}

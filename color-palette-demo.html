@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оранжевая палитра портфолио</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      padding: 3rem 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+
+    .subtitle {
+      color: #495057;
+      margin-bottom: 3rem;
+      font-size: 1.125rem;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .color-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .color-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .color-preview {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .color-info {
+      padding: 1.5rem;
+    }
+
+    .color-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .color-hex {
+      font-family: 'Courier New', monospace;
+      font-size: 1.125rem;
+      color: #495057;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .color-usage {
+      color: #868e96;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .gradient-showcase {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .gradient-showcase h2 {
+      margin-bottom: 2rem;
+      color: #1a1a1a;
+    }
+
+    .gradient-box {
+      height: 120px;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .gradient-1 {
+      background: linear-gradient(90deg, #f85125, #FCA45B, #f97316);
+    }
+
+    .gradient-2 {
+      background: linear-gradient(135deg, #f85125, #FCA45B);
+    }
+
+    .gradient-3 {
+      background: radial-gradient(ellipse at top, #f85125, #ff4500);
+    }
+
+    .gradient-4 {
+      background: linear-gradient(180deg, #f85125, #FCA45B, transparent);
+    }
+
+    .examples {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .examples h2 {
+      margin-bottom: 2rem;
+      color: #1a1a1a;
+    }
+
+    .btn-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      background: #f85125;
+      color: white;
+      border: 2px solid #f85125;
+    }
+
+    .btn-primary:hover {
+      background: #FCA45B;
+      border-color: #FCA45B;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(248, 81, 37, 0.3);
+    }
+
+    .btn-primary:active {
+      background: #f97316;
+      border-color: #f97316;
+      transform: translateY(0);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #f85125;
+      border: 2px solid #f85125;
+    }
+
+    .btn-outline:hover {
+      background: #f85125;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(248, 81, 37, 0.2);
+    }
+
+    .tag-demo {
+      display: inline-block;
+      background: white;
+      border: 1px solid rgba(248, 81, 37, 0.15);
+      padding: 0.4rem 0.875rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: #495057;
+      transition: all 0.2s ease;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    .tag-demo:hover {
+      border-color: #f85125;
+      background: rgba(248, 81, 37, 0.05);
+      color: #1a1a1a;
+      transform: translateY(-2px);
+    }
+
+    .demo-section {
+      margin-top: 2rem;
+    }
+
+    .demo-section h3 {
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+      font-size: 1.125rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍊 Оранжевая палитра портфолио</h1>
+    <p class="subtitle">Современная цветовая схема для светлой темы</p>
+
+    <div class="palette-grid">
+      <div class="color-card">
+        <div class="color-preview" style="background: #f85125;">
+          <span>Aa</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Основной бренд</div>
+          <div class="color-hex">#f85125</div>
+          <div class="color-usage">
+            Используется для кнопок, ссылок, акцентов и границ. Основной цвет бренда.
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="color-preview" style="background: #FCA45B;">
+          <span>Aa</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Светлый бренд</div>
+          <div class="color-hex">#FCA45B</div>
+          <div class="color-usage">
+            Используется для градиентов, подсветок и второстепенных акцентов.
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="color-preview" style="background: #ff4500;">
+          <span>Aa</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Тёмно-оранжевый</div>
+          <div class="color-hex">#ff4500</div>
+          <div class="color-usage">
+            Используется для текстовых и логотипных акцентов.
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="color-preview" style="background: #f97316;">
+          <span>Aa</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Активные элементы</div>
+          <div class="color-hex">#f97316</div>
+          <div class="color-usage">
+            Используется для активных состояний, табов и интерактивной графики.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gradient-showcase">
+      <h2>Градиенты</h2>
+      <div class="gradient-box gradient-1">
+        Трёхцветный горизонтальный
+      </div>
+      <div class="gradient-box gradient-2">
+        Диагональный двухцветный
+      </div>
+      <div class="gradient-box gradient-3">
+        Радиальный градиент
+      </div>
+      <div class="gradient-box gradient-4">
+        Вертикальный с прозрачностью
+      </div>
+    </div>
+
+    <div class="examples">
+      <h2>Примеры использования</h2>
+      
+      <div class="demo-section">
+        <h3>Кнопки</h3>
+        <button class="btn-demo btn-primary">Primary Button</button>
+        <button class="btn-demo btn-outline">Outline Button</button>
+      </div>
+
+      <div class="demo-section">
+        <h3>Теги навыков</h3>
+        <span class="tag-demo">JavaScript</span>
+        <span class="tag-demo">TypeScript</span>
+        <span class="tag-demo">React</span>
+        <span class="tag-demo">Redux</span>
+        <span class="tag-demo">PostgreSQL</span>
+        <span class="tag-demo">Python</span>
+        <span class="tag-demo">Git</span>
+        <span class="tag-demo">AI Tools</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
