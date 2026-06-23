@@ -201,18 +201,6 @@
     margin-bottom: 0.75rem;
     line-height: 1.3;
   }
-
-  .book-description {
-    font-size: 0.9375rem;
-    margin-bottom: 1rem;
-    width: auto;
-  }
-
-  .book-number {
-    font-size: 5rem;
-    top: 1.5rem;
-    right: 1.5rem;
-  }
 }
 
 /* Mobile (768px and below) */
@@ -503,6 +491,16 @@
     gap: 0;
     text-align: left;
     position: relative;
+  }
+  
+  /* На мобильных — скрыть дубликаты, показать book-info */
+  .book-date-desktop,
+  .book-title-desktop {
+    display: none;
+  }
+
+  .book-info {
+    display: flex;
   }
   
   /* Верхняя часть: фото + дата и название */

@@ -376,9 +376,18 @@
   gap: 0.5rem;
 }
 
-/* Дубликаты даты/названия для планшетного layout — скрыты по умолчанию */
+/* Дубликаты даты/названия для десктопного layout */
 .book-date-desktop,
 .book-title-desktop {
+  display: block;
+}
+
+/* На десктопе book-header содержит только картинку — book-info скрыт */
+.book-header {
+  flex-shrink: 0;
+}
+
+.book-info {
   display: none;
 }
 
