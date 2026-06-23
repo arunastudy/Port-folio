@@ -63,12 +63,18 @@ export function renderBooks(): void {
     return `
     <div class="book-card animate-on-scroll">
       <div class="book-number">${book.number}</div>
-      <div class="book-image">
-        <img src="${book.image}" alt="${book.title[lang as keyof typeof book.title]}" loading="lazy">
+      <div class="book-header">
+        <div class="book-image">
+          <img src="${book.image}" alt="${book.title[lang as keyof typeof book.title]}" loading="lazy">
+        </div>
+        <div class="book-info">
+          <div class="book-date">${displayDate}</div>
+          <h3 class="book-title">${book.title[lang as keyof typeof book.title]}</h3>
+        </div>
       </div>
       <div class="book-content">
-        <div class="book-date">${displayDate}</div>
-        <h3 class="book-title">${book.title[lang as keyof typeof book.title]}</h3>
+        <div class="book-date book-date-desktop">${displayDate}</div>
+        <h3 class="book-title book-title-desktop">${book.title[lang as keyof typeof book.title]}</h3>
         <p class="book-description">${book.description[lang as keyof typeof book.description]}</p>
         <div class="book-tags">
           ${displayTags.map(tag => `<span class="tag">${tag}</span>`).join('')}

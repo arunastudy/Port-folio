@@ -1,0 +1,24 @@
+/* Scroll Progress Bar */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--accent-primary);
+}
+
+[data-theme="light"] .scroll-progress {
+  box-shadow: 0 0 8px rgba(248, 81, 37, 0.3);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .scroll-progress {
+    height: 2px;
+  }
+}

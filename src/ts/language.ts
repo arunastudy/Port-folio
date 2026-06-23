@@ -40,7 +40,12 @@ function updateLanguage(lang: string): void {
   elements.forEach(element => {
     const text = element.getAttribute(`data-${lang}`);
     if (text) {
-      element.textContent = text;
+      // Use innerHTML if the value contains HTML tags (e.g. <br>), otherwise textContent
+      if (text.includes('<')) {
+        element.innerHTML = text;
+      } else {
+        element.textContent = text;
+      }
     }
   });
 }

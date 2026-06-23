@@ -9,6 +9,9 @@ import { renderProjects } from './ts/projects';
 import { renderExperience } from './ts/experience';
 import { initMobileMenu } from './ts/mobile-menu';
 import { initSmoothScroll } from './ts/smooth-scroll';
+import { initLoader } from './ts/loader';
+import { initScrollProgress } from './ts/scroll-progress';
+import { initScrollToTop } from './ts/scroll-to-top';
 
 // Function to render all content
 function renderAllContent(): void {
@@ -26,7 +29,10 @@ function renderAllContent(): void {
 
 // Initialize all modules
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Portfolio initialized');
+  console.log('✨ Portfolio initialized');
+  
+  // Initialize loader (should be first)
+  initLoader();
   
   // Initialize core features
   initTheme();
@@ -34,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initMobileMenu();
   initSmoothScroll();
+  initScrollProgress();
+  initScrollToTop();
   
   // Render initial content
   renderAllContent();

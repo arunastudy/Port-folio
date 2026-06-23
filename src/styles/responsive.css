@@ -1,6 +1,11 @@
 /* Responsive Styles */
 
-/* Large Tablet & Small Desktop */
+/* Mobile break - hide by default */
+.mobile-break {
+  display: none;
+}
+
+/* Large Tablet & Small Desktop (1200px - 1024px) */
 @media (max-width: 1200px) {
   .container {
     padding: 0 2rem;
@@ -18,12 +23,24 @@
   .hero-content {
     max-width: 650px;
   }
+  
+  .section-title {
+    font-size: 2.25rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Tablet */
+/* Tablet (1024px - 768px) */
 @media (max-width: 1024px) {
   .container {
     padding: 0 1.5rem;
+  }
+  
+  .section {
+    padding: 5rem 0;
   }
   
   .hero-wrapper {
@@ -35,9 +52,8 @@
   .hero-resume {
     width: 100%;
     max-width: 400px;
-    height: 520px;
+    height: 1100px;
     margin: 0 auto;
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   }
   
   .hero-content {
@@ -53,7 +69,8 @@
   .hero-stats {
     margin-left: auto;
     margin-right: auto;
-    max-width: 500px;
+    max-width: 600px;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .hero-cta {
@@ -66,15 +83,13 @@
   }
   
   .book-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    align-items: flex-start;
   }
   
   .book-image {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
   }
   
   .toefl-breakdown {
@@ -84,17 +99,130 @@
   .contact-links {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Интервью на Limon.KG — иконка и кнопка */
+  .interview-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+  }
+
+  .interview-link {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
 }
 
-/* Mobile */
+/* Планшет — восстановить иконку интервью (перебивает мобильный display:none) */
+@media (min-width: 769px) {
+  .interview-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Восстановить горизонтальный layout карточки интервью */
+  .interview-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .interview-link {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+}
+
+/* iPad Air / Pro 820×1180 */
+@media (min-width: 769px) and (max-width: 1024px) and (min-height: 1100px) {
+  .hero-resume {
+    max-width: 420px;
+    height: 600px;
+  }
+
+  /* Раздел Мои книги — горизонтальная карточка: фото слева, контент справа */
+  .book-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  /* book-header — только фото, скрыть book-info (дату/название) */
+  .book-header {
+    flex-direction: column;
+    flex-shrink: 0;
+    width: auto;
+    gap: 0;
+    margin-bottom: 0;
+    align-items: flex-start;
+  }
+
+  .book-image {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+  }
+
+  .book-info {
+    display: none;
+  }
+
+  /* book-content — показываем с датой и названием */
+  .book-content {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Показываем дата/название-дубликаты только здесь */
+  .book-date-desktop {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .book-title-desktop {
+    display: block;
+    font-size: 1.375rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .book-description {
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+    width: auto;
+  }
+
+  .book-number {
+    font-size: 5rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+/* Mobile (768px and below) */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
   }
   
   .section {
     padding: 4rem 0;
-    transition: padding var(--transition-medium);
   }
   
   .section-header {
@@ -102,18 +230,15 @@
   }
   
   .section-title {
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-size: clamp(1.875rem, 6vw, 2.5rem);
   }
   
   .section-subtitle {
     font-size: 0.9375rem;
+    line-height: 1.6;
   }
   
   /* Header */
-  .header {
-    transition: background var(--transition-medium);
-  }
-  
   .nav {
     padding: 1rem 0;
   }
@@ -122,69 +247,451 @@
     font-size: 1.125rem;
   }
   
-  /* Hero */
+  /* Hero Section */
   .hero {
     padding: 6rem 0 3rem;
     min-height: auto;
   }
   
   .hero-wrapper {
-    flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
   
+  /* Fix 1: уменьшить высоту PDF на 10px для всех телефонов */
   .hero-resume {
     width: 100%;
-    max-width: 320px;
-    height: 470px;
+    max-width: 340px;
+    height: 460px;
   }
   
-  .hero-content {
-    text-align: center;
+  .mobile-break {
+    display: inline;
   }
   
+  /* Fix 2: hero-tag — Стипендиат на строке 1, Разработчик + Автор на строке 2, иконки как на десктопе */
   .hero-tag {
     font-size: 0.75rem;
-    padding: 0.4rem 1rem;
-    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    gap: 0.4rem 0.75rem;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
   }
-  
+
+  /* Первый tag-item (Стипендиат) занимает всю строку */
+  .tag-item:nth-child(1) {
+    width: 100%;
+    justify-content: center;
+  }
+
   .hero-tag svg {
     width: 14px;
     height: 14px;
   }
   
-  .tag-item {
-    gap: 0.3rem;
-  }
-  
   .hero-title {
-    font-size: clamp(2rem, 10vw, 3.5rem);
-    margin-bottom: 1rem;
+    font-size: clamp(2.25rem, 8vw, 3rem);
+    margin-bottom: 1.25rem;
   }
   
   .hero-subtitle {
     font-size: 0.9375rem;
+    line-height: 1.7;
     margin-bottom: 2rem;
   }
   
-  /* Статистики - 2 ряда по 2 */
+  /* Stats - 2x2 Grid */
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 100%;
   }
   
   .stat-card {
+    padding: 1rem 0.875rem;
     gap: 0.5rem;
-    justify-content: flex-start;
-    padding: 0.8rem;
     background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius-md);
-    border: 0.8px inset var(--border-color);
+  }
+  
+  .stat-num {
+    font-size: 1.75rem;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+  
+  /* CTA Buttons */
+  .hero-cta {
+    flex-direction: row;
+    gap: 0.875rem;
+    justify-content: center;
+  }
+  
+  .btn-primary,
+  .btn-outline {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    max-width: 180px;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  /* About Section */
+  .highlights h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+  
+  .highlights ul {
+    padding-left: 1.25rem;
+  }
+  
+  .highlights li {
+    font-size: 0.9375rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.6;
+  }
+  
+  .interview-card {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Скрыть иконку-квадрат слева на мобильных */
+  .interview-icon {
+    display: none;
+  }
+
+  .interview-card h3 {
+    font-size: 1.125rem;
+  }
+  
+  .interview-card p {
+    font-size: 0.875rem;
+  }
+
+  /* Сбросить абсолютное позиционирование кнопки "Читать интервью" */
+  .interview-link {
+    position: static;
+    margin-top: 0.75rem;
+    display: inline-flex;
+    padding: 0.375rem 0.875rem;
+  }
+
+
+  
+  /* Skills */
+  .skill-group {
+    margin-bottom: 2rem;
+  }
+  
+  .skill-group h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+  
+  .skill-tags {
+    gap: 0.5rem;
+  }
+  
+  .skill-tags span {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.875rem;
+  }
+  
+  /* TOEFL Score */
+  .toefl-score {
+    padding: 1.5rem;
+  }
+  
+  .toefl-main {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .toefl-num {
+    font-size: 2.75rem;
+  }
+  
+  .toefl-text span {
+    font-size: 0.875rem;
+  }
+  
+  .toefl-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .score-item {
+    flex: 1;
+    min-width: 70px;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  
+  .score-item span {
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Cards */
+  .education-grid,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .education-card,
+  .achievement-card {
+    padding: 1.75rem;
+  }
+  
+  .education-card h3,
+  .achievement-card h3 {
+    font-size: 1.125rem;
+  }
+  
+  /* Fix 3: проекты — полная ширина контейнера, одна колонка */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .project-card {
+    padding: 1.5rem;
+    min-height: 240px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .project-description {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+  
+  .project-description {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Books */
+  .books-grid {
+    gap: 1.5rem;
+  }
+  
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0;
+    text-align: left;
+    position: relative;
+  }
+  
+  /* Верхняя часть: фото + дата и название */
+  .book-header {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  
+  .book-image {
+    width: 170px;
+    height: 170px;
+    flex-shrink: 0;
+  }
+  
+  .book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .book-number {
+    font-size: 3rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .book-date {
+    font-size: 0.8125rem;
+    margin-bottom: 0.25rem;
+    order: 1;
+  }
+  
+  .book-title {
+    font-size: 1.125rem;
+    margin-bottom: 0;
+    order: 2;
+  }
+  
+  /* Нижняя часть: описание на полную ширину */
+  .book-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  /* Теги на полную ширину */
+  .book-tags {
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .book-tags .tag {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.625rem;
+  }
+  
+  /* Experience */
+  .experience-timeline {
+    padding-left: 2rem;
+  }
+  
+  .experience-item {
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .experience-item::before {
+    left: -2.5rem;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .exp-period {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .exp-content {
+    padding: 1.75rem;
+  }
+  
+  .exp-role {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .exp-company {
+    font-size: 1rem;
+    margin-bottom: 0.875rem;
+  }
+  
+  .exp-description {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+  
+  /* Contact */
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .contact-card {
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .contact-info h3 {
+    font-size: 0.9375rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .contact-info p {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 3.5rem 0;
+  }
+  
+  .section-title {
+    font-size: clamp(1.625rem, 7vw, 2rem);
+  }
+  
+  .section-subtitle {
+    font-size: 0.875rem;
+  }
+  
+  /* Hero */
+  .hero {
+    padding: 5.5rem 0 2.5rem;
+  }
+  
+  .hero-wrapper {
+    gap: 2rem;
+  }
+  
+  /* Fix 1: высота PDF -10px */
+  .hero-resume {
+    max-width: 300px;
+    height: 430px;
+  }
+  
+  .hero-tag {
+    font-size: 0.6875rem;
+    padding: 0.45rem 0.875rem;
+    gap: 0.5rem;
+  }
+  
+  .hero-tag svg {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+  
+  .hero-stats {
+    gap: 0.875rem;
+  }
+  
+  .stat-card {
+    padding: 0.875rem 0.75rem;
   }
   
   .stat-num {
@@ -195,66 +702,52 @@
     font-size: 0.8125rem;
   }
   
-  /* Кнопки в одну строку - в центре с небольшим сдвигом вправо */
   .hero-cta {
-    flex-direction: row;
-    width: 80%;
     gap: 0.75rem;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
   }
   
   .btn-primary,
   .btn-outline {
-    width: auto;
-    flex: 1;
-    justify-content: center;
-    padding: 0.75rem;
-    font-size: 0.875rem;
+    padding: 0.75rem 0.875rem;
+    font-size: 0.8125rem;
   }
   
-  /* About Section */
-  .highlights ul {
-    padding-left: 1.25rem;
-  }
-  
+  /* About */
   .highlights li {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     margin-bottom: 0.75rem;
   }
   
   .interview-card {
     padding: 1.25rem;
   }
-  
-  .skill-group h3 {
-    font-size: 1.125rem;
+
+  .interview-icon {
+    display: none;
+  }
+
+  .interview-card h3 {
+    font-size: 1rem;
   }
   
-  .skill-tags {
-    gap: 0.5rem;
+  .interview-card p {
+    font-size: 0.8125rem;
   }
   
   .skill-tags span {
-    font-size: 0.8125rem;
-    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
   }
   
-  /* TOEFL Score - все в одну строку */
+  /* TOEFL */
   .toefl-score {
     padding: 1.25rem;
   }
   
   .toefl-main {
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  
-  .toefl-score-left {
-    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
   
   .toefl-num {
@@ -262,59 +755,39 @@
   }
   
   .toefl-breakdown {
-    display: flex;
-    flex-direction: row;
-    gap: 0.75rem;
-    flex: 1;
+    width: 100%;
+    gap: 0.625rem;
   }
   
   .score-item {
-    font-size: 0.75rem;
-    text-align: center;
-    flex: 1;
+    font-size: 0.6875rem;
   }
   
   .score-item span {
-    display: block;
     font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-    margin-bottom: 0.125rem;
   }
   
-  /* Cards & Grids */
-  .education-grid,
-  .achievements-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  
+  /* Cards */
   .education-card,
   .achievement-card {
     padding: 1.5rem;
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   }
   
-  /* Проекты - уменьшенная ширина, увеличенная высота, центрирование */
+  .education-card h3,
+  .achievement-card h3 {
+    font-size: 1rem;
+  }
+  
+  /* Projects */
   .projects-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
     gap: 1.25rem;
-    max-width: 360px;
-    margin: 0 auto;
-    padding: 0;
   }
   
   .project-card {
     padding: 1.5rem;
-    min-height: 280px;
-    margin: 0 auto;
-  }
-  
-  .project-description {
-    -webkit-line-clamp: 4;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    min-height: 240px;
   }
   
   .project-title {
@@ -323,108 +796,72 @@
   
   .project-description {
     font-size: 0.875rem;
-    -webkit-line-clamp: 5;
   }
   
-  /* Книги - тот же стиль, уменьшенные размеры */
+  /* Books */
   .book-card {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     padding: 1.25rem;
-    gap: 1.25rem;
-    align-items: stretch;
-    text-align: left;
-    min-height: 150px;
+    gap: 0;
+  }
+  
+  .book-header {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
   }
   
   .book-image {
-    width: 150px;
+    width: 110px;
     height: 150px;
     flex-shrink: 0;
-    align-self: stretch;
   }
   
-  .book-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .book-content {
+  .book-info {
     flex: 1;
   }
   
   .book-number {
     font-size: 2.5rem;
-    top: 0.75rem;
-    right: 0.75rem;
-  }
-  
-  .book-title {
-    font-size: 1.125rem;
-    margin-bottom: 0.5rem;
+    top: 0.875rem;
+    right: 0.875rem;
   }
   
   .book-date {
     font-size: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.375rem;
+  }
+  
+  .book-title {
+    font-size: 1rem;
+    margin-bottom: 0;
   }
   
   .book-description {
     font-size: 0.8125rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-  }
-  
-  .book-tags {
-    gap: 0.375rem;
+    margin-bottom: 0.875rem;
   }
   
   .book-tags .tag {
     font-size: 0.6875rem;
-    padding: 0.25rem 0.5rem;
+    padding: 0.3rem 0.5rem;
   }
   
-  /* Контакты - 4 в одну строку, уменьшенный размер */
-  .contact-links {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  
-  .contact-card {
-    padding: 1rem 0.5rem;
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .contact-icon {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .contact-info h3 {
-    font-size: 0.75rem;
-  }
-  
-  .contact-info p {
-    font-size: 0.625rem;
-  }
-  
+  /* Experience */
   .experience-timeline {
-    padding-left: 1.5rem;
+    padding-left: 1.75rem;
   }
   
   .experience-item {
-    padding-left: 1.5rem;
+    padding-left: 1.75rem;
     margin-bottom: 2.5rem;
   }
   
   .experience-item::before {
-    left: -2rem;
+    left: -2.25rem;
     width: 10px;
     height: 10px;
   }
@@ -434,67 +871,120 @@
   }
   
   .exp-role {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   
   .exp-company {
     font-size: 0.9375rem;
   }
+  
+  .exp-description {
+    font-size: 0.875rem;
+  }
+  
+  /* Contact */
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .contact-card {
+    padding: 1.25rem 1rem;
+  }
+  
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .contact-info h3 {
+    font-size: 0.875rem;
+  }
+  
+  .contact-info p {
+    font-size: 0.75rem;
+  }
 }
 
-/* Small Mobile */
-@media (max-width: 480px) {
-  .container {
-    padding: 0 0.875rem;
-  }
-  
-  .section {
-    padding: 3rem 0;
-  }
-  
-  .section-title {
-    font-size: clamp(1.5rem, 8vw, 2rem);
-  }
-  
-  .hero {
-    padding: 5rem 0 2.5rem;
-  }
-  
+/* Extra Small Devices & Specific iPhone Models */
+
+/* iPhone 14 Pro Max, 15 Pro Max, 16 Pro Max (430px) */
+@media (max-width: 430px) and (min-height: 900px) {
   .hero-resume {
-    max-width: 280px;
+    max-width: 320px;
     height: 460px;
   }
   
-  .hero-tag {
-    font-size: 0.6875rem;
-    padding: 0.35rem 0.875rem;
-    gap: 0.4rem;
+  .hero-title {
+    font-size: 2.5rem;
   }
   
-  .hero-tag svg {
-    width: 12px;
-    height: 12px;
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* Фото книги — квадрат с увеличенной шириной */
+  .book-image {
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+}
+
+/* iPhone 12 Pro Max, 13 Pro Max (428px) */
+@media (max-width: 428px) and (max-height: 926px) {
+  .hero-resume {
+    max-width: 310px;
+    height: 450px;
+  }
+}
+
+/* iPhone XR, 11 (414px) */
+@media (max-width: 414px) and (max-height: 896px) {
+  .container {
+    padding: 0 1rem;
   }
   
-  .tag-divider {
-    display: none;
+  .hero {
+    padding: 5.5rem 0 2.5rem;
+  }
+  
+  .hero-resume {
+    max-width: 300px;
+    height: 435px;
   }
   
   .hero-title {
-    font-size: clamp(1.75rem, 9vw, 2.5rem);
-  }
-  
-  .hero-subtitle {
-    font-size: 0.875rem;
-    line-height: 1.6;
-  }
-  
-  .hero-stats {
-    gap: 0.875rem;
+    font-size: 2.25rem;
   }
   
   .stat-card {
-    padding: 0.625rem;
+    padding: 0.875rem 0.625rem;
+  }
+  
+  .book-image {
+    width: 175px;
+    height: 175px;
+  }
+}
+
+/* iPhone 12, 12 Pro, 13, 13 Pro, 14, 15 (390px) */
+@media (max-width: 390px) and (max-height: 844px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero-resume {
+    max-width: 290px;
+    height: 420px;
+  }
+  
+  .hero-title {
+    font-size: 2.125rem;
+  }
+  
+  .stat-card {
+    padding: 0.8rem 0.6rem;
   }
   
   .stat-num {
@@ -505,48 +995,29 @@
     font-size: 0.75rem;
   }
   
-  .hero-cta {
-    gap: 0.625rem;
-  }
-  
   .btn-primary,
   .btn-outline {
-    padding: 0.625rem 0.875rem;
+    padding: 0.7rem 0.8rem;
     font-size: 0.8125rem;
   }
   
-  .education-card,
-  .achievement-card,
-  .project-card {
-    padding: 1.25rem;
-  }
-  
-  /* Проекты - еще меньше для маленьких экранов */
-  .projects-grid {
-    max-width: 100%;
-  }
-  
-  .project-card {
-    min-height: 260px;
-  }
-  
-  /* Книги - адаптация для маленьких экранов */
-  .book-card {
-    padding: 1rem;
-    gap: 1rem;
+  .book-header {
+    gap: 0.875rem;
   }
   
   .book-image {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
   }
   
   .book-number {
-    font-size: 2rem;
+    font-size: 2.25rem;
+    top: 0.75rem;
+    right: 0.75rem;
   }
   
   .book-title {
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
   
   .book-description {
@@ -555,50 +1026,287 @@
   
   .book-tags .tag {
     font-size: 0.625rem;
-    padding: 0.2rem 0.4rem;
+  }
+}
+
+/* iPhone X, XS, 11 Pro, 12 mini, 13 mini (375px) */
+@media (max-width: 375px) and (max-height: 812px) {
+  .container {
+    padding: 0 0.875rem;
   }
   
-  /* TOEFL - компактная версия */
+  .section {
+    padding: 3.25rem 0;
+  }
+  
+  .hero {
+    padding: 5.25rem 0 2.25rem;
+  }
+  
+  .hero-resume {
+    max-width: 280px;
+    height: 405px;
+  }
+  
+  .hero-tag {
+    font-size: 0.625rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.8125rem;
+  }
+  
+  .hero-stats {
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .stat-num {
+    font-size: 1.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+  
+  .hero-cta {
+    gap: 0.65rem;
+  }
+  
+  .btn-primary,
+  .btn-outline {
+    padding: 0.675rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .project-card {
+    padding: 1.375rem;
+    min-height: 230px;
+  }
+  
+  .project-title {
+    font-size: 1rem;
+  }
+  
+  .project-description {
+    font-size: 0.8125rem;
+  }
+  
+  .book-card {
+    padding: 1.125rem;
+  }
+  
+  .book-header {
+    gap: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+  
+  .book-image {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .book-number {
+    font-size: 2rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  
+  .book-date {
+    font-size: 0.6875rem;
+  }
+  
+  .book-title {
+    font-size: 0.9375rem;
+  }
+  
+  .book-description {
+    font-size: 0.75rem;
+  }
+  
+  .book-tags .tag {
+    font-size: 0.625rem;
+  }
+  
+  .contact-card {
+    padding: 1.125rem 0.875rem;
+  }
+  
+  .contact-icon {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .exp-content {
+    padding: 1.375rem;
+  }
+  
+  .exp-role {
+    font-size: 0.9375rem;
+  }
+  
+  .exp-description {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Very Small Devices (360px and below) */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .hero {
+    padding: 5rem 0 2rem;
+  }
+  
+  .hero-resume {
+    max-width: 260px;
+    height: 380px;
+  }
+  
+  .hero-tag {
+    font-size: 0.5625rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .hero-tag svg {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .hero-title {
+    font-size: 1.875rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.8125rem;
+  }
+  
+  .hero-stats {
+    gap: 0.625rem;
+  }
+  
+  .stat-card {
+    padding: 0.625rem 0.5rem;
+  }
+  
+  .stat-num {
+    font-size: 1.25rem;
+  }
+  
+  .stat-label {
+    font-size: 0.6875rem;
+  }
+  
+  .btn-primary,
+  .btn-outline {
+    padding: 0.625rem 0.7rem;
+    font-size: 0.75rem;
+  }
+  
+  .section-title {
+    font-size: 1.625rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.8125rem;
+  }
+  
+  .education-card,
+  .achievement-card {
+    padding: 1.25rem;
+  }
+  
+  .project-card {
+    padding: 1.25rem;
+    min-height: 220px;
+  }
+  
+  .project-title {
+    font-size: 0.9375rem;
+  }
+  
+  .project-description {
+    font-size: 0.8125rem;
+  }
+  
+  .book-card {
+    padding: 1rem;
+  }
+  
+  .book-header {
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .book-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .book-number {
+    font-size: 1.875rem;
+    top: 0.625rem;
+    right: 0.625rem;
+  }
+  
+  .book-date {
+    font-size: 0.6875rem;
+  }
+  
+  .book-title {
+    font-size: 0.875rem;
+  }
+  
+  .book-description {
+    font-size: 0.6875rem;
+  }
+  
+  .book-tags .tag {
+    font-size: 0.5625rem;
+    padding: 0.25rem 0.4rem;
+  }
+  
   .toefl-score {
     padding: 1rem;
   }
   
-  .toefl-main {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
   .toefl-num {
-    font-size: 2.25rem;
-  }
-  
-  .toefl-breakdown {
-    width: 100%;
-    gap: 0.5rem;
+    font-size: 2rem;
   }
   
   .score-item {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
   }
   
   .score-item span {
     font-size: 0.875rem;
   }
   
-  /* Контакты - квадраты меньше */
-  .contact-links {
-    gap: 0.75rem;
-    max-width: 100%;
-  }
-  
   .contact-card {
-    padding: 1rem 0.5rem;
+    padding: 1rem 0.75rem;
   }
   
   .contact-icon {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
   
   .contact-info h3 {
@@ -609,26 +1317,12 @@
     font-size: 0.6875rem;
   }
   
-  .nav-controls {
-    gap: 0.5rem;
-  }
-  
-  .theme-toggle,
-  .lang-toggle {
-    padding: 0.375rem 0.625rem;
-    font-size: 0.8125rem;
-  }
-  
-  .experience-timeline::before {
-    left: 0;
-  }
-  
   .experience-item {
-    padding-left: 1.25rem;
+    padding-left: 1.5rem;
   }
   
   .experience-item::before {
-    left: -1.75rem;
+    left: -2rem;
     width: 8px;
     height: 8px;
   }
@@ -636,28 +1330,82 @@
   .exp-content {
     padding: 1.25rem;
   }
+  
+  .exp-role {
+    font-size: 0.875rem;
+  }
+  
+  .exp-company {
+    font-size: 0.875rem;
+  }
+  
+  .exp-description {
+    font-size: 0.8125rem;
+  }
+  
+  .nav-links {
+    width: 165px;
+    height: auto;
+    padding: 1rem 0.625rem;
+  }
+  
+  .nav-links a {
+    font-size: 0.8125rem;
+    padding: 0.4rem 0.625rem;
+  }
 }
 
-/* Extra Small Devices */
-@media (max-width: 360px) {
-  .container {
-    padding: 0 0.75rem;
+/* Landscape mode optimizations for phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding: 4rem 0 2rem;
+  }
+  
+  .hero-wrapper {
+    flex-direction: row;
+    gap: 2rem;
   }
   
   .hero-resume {
-    max-width: 100%;
+    max-width: 250px;
     height: 350px;
   }
   
-  .hero-title {
-    font-size: clamp(1.5rem, 8vw, 2rem);
+  .section {
+    padding: 3rem 0;
   }
   
-  .stat-num {
-    font-size: 1.25rem;
+  .stat-card {
+    padding: 0.625rem 0.5rem;
   }
-  
-  .stat-label {
-    font-size: 0.75rem;
+}
+
+/* iPhone 8 / SE 2nd gen (375×667) */
+@media (max-width: 375px) and (max-height: 670px) {
+  /* TOEFL — все 4 карточки в одну строку */
+  .toefl-main {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .toefl-breakdown {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    width: auto;
+    flex: 1;
+  }
+
+  .score-item {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.5625rem;
+    text-align: center;
+  }
+
+  .score-item span {
+    font-size: 0.875rem;
+    margin-bottom: 0.125rem;
   }
 }
