@@ -24,7 +24,7 @@ const booksData: Book[] = [
       en: 'A comprehensive guide covering school mathematics from 4th to 11th grade. Contains 1000+ tests combining theory and practice. Topics include chessboard logic, Roman numerals, clock problems, working with diagrams, and Olympiad-level problems.',
       ru: 'Комплексное руководство по школьной математике с 4 по 11 класс. Содержит более 1000 тестов, объединяющих теорию и практику. Включает логику шахматной доски, римские цифры, задачи с часами и олимпиадные задачи.'
     },
-    image: './Математика с нуля.JPG',
+    image: '/Математика с нуля.JPG',
     tags: {
       en: ['1000+ Tests', 'Grades 4-11', 'Olympiad Prep', 'USE/ORT'],
       ru: ['1000+ тестов', 'Классы 4-11', 'Подготовка к олимпиадам', 'ОРТ']
@@ -42,7 +42,7 @@ const booksData: Book[] = [
       en: 'A student guide on education, motivation, self-development, IT, planning, and TOEFL preparation. Covers foundations of education, Golden Certificate tips, 10 math topics with 300 tests, English learning from beginner to TOEFL, IT career paths, and productivity tools.',
       ru: 'Студенческое руководство по образованию, мотивации, саморазвитию, IT, планированию и подготовке к TOEFL. Охватывает основы образования, советы по Золотому сертификату, 10 тем по математике с 300 тестами, изучение английского языка и карьерные пути в IT.'
     },
-    image: './От пешки до Короля.jpg',
+    image: '/От пешки до Короля.jpg',
     tags: {
       en: ['Self-Development', 'TOEFL', 'IT Careers', '300 Tests', 'Productivity'],
       ru: ['Саморазвитие', 'TOEFL', 'Карьера в IT', '300 тестов', 'Продуктивность']
